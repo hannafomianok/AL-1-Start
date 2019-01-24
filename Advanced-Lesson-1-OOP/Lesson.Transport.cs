@@ -23,7 +23,7 @@ namespace Advanced_Lesson_1_OOP
             FuelCar firstPlace = (FuelCar)winner;
 
 
-            Transport fCar = new FuelCar() { Distance= 150, Fuel = 50, FuelUsage = 13 };
+            Transport fCar = new FuelCar() { Distance = 150, Fuel = 50, FuelUsage = 13 };
             Transport eCar = new ElectroCar() { Distance = 300, Battery = 500, DistanceBattery = 200 };
 
             var cars = new Transport[] { fCar, eCar };
@@ -32,11 +32,13 @@ namespace Advanced_Lesson_1_OOP
             {
                 car.Move(10);
             }
-        }   
+
+        }
     }
 
     public class Transport
     {
+
         public int Weight { get; set; }
         public int Height { get; set; }
         public int Length { get; set; }
@@ -52,19 +54,85 @@ namespace Advanced_Lesson_1_OOP
 
     public class Car : Transport
     {
-        public float Engine { get; set; }
+        public double Engine { get; set; }
     }
 
     public class FuelCar : Car
     {
+
         public int Tank { get; set; }
         public float Fuel { get; set; }
         public float FuelUsage { get; set; }
+
 
         public override void Move(float km)
         {
             base.Move(km);
             this.Fuel -= km * FuelUsage / 100;
+        }
+
+        public static bool operator >(FuelCar op1, FuelCar op2)
+        {
+            if (op1.Engine > op2.Engine)
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+
+
+        }
+
+        public static bool operator <(FuelCar op1, FuelCar op2)
+        {
+            if (op1.Engine < op2.Engine)
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool operator ==(FuelCar op1, FuelCar op2)
+        {
+            if (op1.Engine == op2.Engine)
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public static bool operator !=(FuelCar op1, FuelCar op2)
+        {
+            if (op1.Engine != op2.Engine)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 

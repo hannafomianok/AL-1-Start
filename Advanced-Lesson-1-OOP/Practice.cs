@@ -14,28 +14,31 @@ namespace Advanced_Lesson_1_OOP
         /// </summary>
         public static void A_L1_P1_OOP()
         {
-            var circle1 = new Circle(3);
-            var circle2 = new Circle(5);
 
-            var square1 = new Square(2);
-            var square2 = new Square(4);
-
-            var arr = new Figure [] { circle1, circle2, square1, square2 };
-            for (int i = 0; i < 4; i++)
+            double[,] arr = new double[10, 2];
+            for (int i = 1; i < 10; i++)
             {
-                //arr[i].CalcArea();
-                Console.WriteLine(arr[i].CalcArea());
+                for (int j = 0; j < 2; j++)
+                {
+                    int s = 1;
+                    Circle circle = new Circle(i);
+                    var sCircle = circle.CalcArea();
+                    Square square = new Square(i);
+                    var sSquare = square.CalcArea();
+                    s++;
+                    arr[i, 0] = sCircle;
+                    arr[i, 1] = sSquare;
+                    Console.Write($"{arr[i, j]} ");
+                }
+                Console.WriteLine();
             }
 
-            var @int = new Circle(2);
         }
 
-        public static void @system()
-        {
 
-        }
 
-        class Circle:Figure
+
+        public class Circle : Figure
         {
             private int rad;
             public Circle(int rad)
@@ -48,7 +51,7 @@ namespace Advanced_Lesson_1_OOP
             }
         }
 
-        class Square:Figure
+        public class Square : Figure
         {
             private int a;
             public Square(int a)
@@ -61,7 +64,7 @@ namespace Advanced_Lesson_1_OOP
             }
         }
 
-        class Figure
+        public class Figure
         {
             public virtual double CalcArea()
             {
@@ -75,6 +78,30 @@ namespace Advanced_Lesson_1_OOP
         /// </summary>
         public static void A_L1_P6_OperatorsOverloading()
         {
+            FuelCar car1 = new FuelCar();
+            car1.Engine = 120;
+            FuelCar car2 = new FuelCar();
+            car2.Engine = 163;
+
+            if (car1 > car2)
+            {
+                Console.WriteLine("car1 больше  car2");
+            }
+
+            if (car1 < car2)
+            {
+                Console.WriteLine("car1 меньше car2");
+            }
+
+            if (car1 == car2)
+            {
+                Console.WriteLine("car1 равна car2");
+            }
+
+            if (car1 != car2)
+            {
+                Console.WriteLine("car1 не равна car2");
+            }
         }
 
         /// <summary>
@@ -82,7 +109,7 @@ namespace Advanced_Lesson_1_OOP
         /// Продемонстрировать использование в коде. 
         /// </summary>
         public static void A_L1_P7_OperatorsOverloading()
-        {            
-        }        
+        {
+        }
     }
 }
